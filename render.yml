@@ -1,0 +1,18 @@
+services:
+  - type: web
+    name: frappe-web
+    env: docker
+    repo: https://github.com/YOUR_USERNAME/YOUR_REPO
+    dockerContext: .
+    dockerfilePath: Dockerfile
+    autoDeploy: false
+    plan: starter
+    envVars:
+      - key: FRAPPE_SITE_NAME_HEADER
+        value: hrms.localhost
+      - key: MYSQL_ROOT_PASSWORD
+        value: 123
+    disk:
+      name: mariadb-data
+      mountPath: /var/lib/mysql
+      sizeGB: 10
